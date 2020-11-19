@@ -41,14 +41,29 @@
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="org.h2.Driver"/>
-        <property name="jdbcUrl" value="jdbc:h2:mem:mydatabase;MODE=PostgreSQL"/>
-        <property name="user" value="sa"/>
-        <property name="password" value=""/>
-        <property name="minPoolSize" value="1"/>
-        <property name="maxPoolSize" value="5"/>
-        <property name="maxIdleTime" value="30000"/>
+<!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--        <property name="driverClass" value="org.h2.Driver"/>-->
+<!--        <property name="jdbcUrl" value="jdbc:h2:mem:mydatabase;MODE=PostgreSQL"/>-->
+<!--        <property name="user" value="sa"/>-->
+<!--        <property name="password" value=""/>-->
+<!--        <property name="minPoolSize" value="1"/>-->
+<!--        <property name="maxPoolSize" value="5"/>-->
+<!--        <property name="maxIdleTime" value="30000"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>-->
+<!--        <property name="url" value="dbc:sqlserver://DEVELOPSERV\MSSQLASTRA;database=hibernate_test"/>-->
+<!--        <property name="username" value="khlopotov"/>-->
+<!--        <property name="password" value="ty5rWq"/>/-->
+<!--    </bean>-->
+
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+        <property name="url" value="jdbc:sqlserver://DEVELOPSERV\MSSQLASTRA;database=hibernate_test" />
+        <property name="username" value="khlopotov" />
+        <property name="password" value="ty5rWq" />
     </bean>
 
     <tx:annotation-driven/>
@@ -63,8 +78,9 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+<!--                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
             </props>
         </property>
 
